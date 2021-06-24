@@ -1,0 +1,43 @@
+{
+    "name": "aleahy/laravel-saasu-connect",
+    "description": "Laravel wrapper for SaasuConnect",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Leahy",
+            "email": "alex@languagetub.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Aleahy\\LaravelSaasuConnect\\": "src/",
+            "Aleahy\\LaravelSaasuConnect\\Tests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../packages/saasu-connect"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "aleahy/saasu-connect": "*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.18"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Aleahy\\LaravelSaasuConnect\\ServiceProvider"
+            ],
+            "aliases": {
+                "SaasuAPI": "Aleahy\\LaravelSaasuConnect\\Facade"
+            }
+        }
+    }
+}
