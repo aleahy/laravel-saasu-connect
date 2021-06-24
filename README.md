@@ -12,13 +12,17 @@ This is a private repository, so a few steps must be completed to make sure it c
     {
         "type": "vcs",
         "url": "git@github.com:aleahy/laravel-saasu-connect.git"
+    },
+    {
+        "type": "vcs",
+        "url": "git@github.com:aleahy/saasu-connect.git"
     }
 ]
 ```
 
 2. Ensure the server has an ssh key configured to connect to github.
 3. Install the package.
-```php
+```bash
 composer require aleahy/laravel-saasu-connect
 ```
 
