@@ -36,6 +36,7 @@ SaasuAPI::findEntity(SaasuInvoice::class, [
 
 ### Available Methods
 The following methods currently exist:
+
 `findEntity` - Finds the provided entity with the search attributes. Returns a collection of entities.
 
 `insertEntity` - Makes a post request for the given entity with the provided attributes.
