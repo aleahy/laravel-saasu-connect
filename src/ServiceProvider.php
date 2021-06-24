@@ -19,7 +19,8 @@ class ServiceProvider extends BaseServiceProvider
         );
 
         $this->app->singleton(SaasuAPI::class, function() {
-            return new SaasuAPI(config('saasu.fileID'), config('saasu.username'), config('saasu.password'));
+            $client = SaasuAPI::createClient(config('saasu.fileID'), config('saasu.username'));
+            return new SaasuAPI($client, config('saasu.fileID'));
         });
     }
 
