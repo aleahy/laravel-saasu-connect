@@ -7,7 +7,7 @@ This package can be imported into laravel to be able to make requests on the Saa
 ## Installation
 This is a private repository, so a few steps must be completed to make sure it can be installed.
 1. Add the repository to `composer.json`
-```php
+```bash
 "repositories":[
     {
         "type": "vcs",
@@ -47,6 +47,7 @@ The following methods currently exist:
 
 `getEntity` - Returns the specific entity with the given id.
 
+`getAllEntities` - Returns all the entities in a single array.
 ### Available Entities
 - Company
 - Contact
