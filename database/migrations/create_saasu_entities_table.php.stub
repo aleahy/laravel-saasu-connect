@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateSaasuEntitiesTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('saasu_entities', function(Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('model_type');
+            $table->unsignedBigInteger('model_id');
+            $table->index(['model_id', 'model_type'], 'saasu_entities_model_id_model_type_index');
+
+            $table->unsignedBigInteger('saasu_id');
+            $table->index(['saasu_id'], 'saasu_id_index');
+
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::drop('saasu_entities');
+    }
+}

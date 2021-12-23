@@ -25,7 +25,8 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "aleahy/saasu-connect": "*"
+        "aleahy/saasu-connect": "*",
+        "spatie/laravel-ray": "1.20"
     },
     "require-dev": {
         "orchestra/testbench": "^6.18"
