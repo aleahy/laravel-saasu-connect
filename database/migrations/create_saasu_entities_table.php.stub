@@ -10,8 +10,8 @@ class CreateSaasuEntitiesTable extends Migration
     {
         Schema::create('saasu_entities', function(Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('model_type');
             $table->unsignedBigInteger('model_id');
+            $table->string('model_type');
             $table->index(['model_id', 'model_type'], 'saasu_entities_model_id_model_type_index');
 
             $table->unsignedBigInteger('saasu_id');

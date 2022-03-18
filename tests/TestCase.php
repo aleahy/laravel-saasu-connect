@@ -4,11 +4,14 @@ namespace Aleahy\LaravelSaasuConnect\Tests;
 use Aleahy\LaravelSaasuConnect\ServiceProvider;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\LaravelRay\RayServiceProvider;
 
 class TestCase extends Orchestra
 {
+    use RefreshDatabase;
+
     protected $testEntity;
 
     public function setUp(): void
