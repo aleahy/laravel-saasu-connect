@@ -20,13 +20,42 @@ class SaasuAPIFake implements SaasuAPIContact
     {
         Assert::assertTrue(count($this->insertions) === 0);
     }
+
     protected function insertSent(string $entityName, $attributes) {
         foreach($this->insertions as $insert) {
             if ($insert['entity'] === $entityName &&
-                array_intersect($attributes, $insert['attributes']) == $attributes)
+                $this->arrayContainsFragment($insert['attributes'], $attributes)) {
+
                 return true;
+            }
         }
+
         return false;
+    }
+    public function arrayContainsFragment(array $origArray, array $fragment) {
+        foreach($fragment as $key => $item) {
+            switch(true) {
+                case !array_key_exists($key, $origArray):
+                    return false;
+                    break;
+
+                case is_array($item) && is_array($origArray[$key]):
+                    if (!$this->arrayContainsFragment($origArray[$key], $item)) {
+                        return false;
+                    }
+                    break;
+
+                case is_array($item) && !is_array($origArray[$key]):
+                    return false;
+                    break;
+
+                default:
+                    if ($fragment[$key] !== $origArray[$key]) {
+                        return false;
+                    }
+            }
+        }
+        return true;
     }
     public function findEntities(string $entityName, array $searchParameters)
     {
