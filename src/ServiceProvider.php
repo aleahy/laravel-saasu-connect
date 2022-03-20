@@ -36,11 +36,13 @@ class ServiceProvider extends BaseServiceProvider
                     __DIR__ . '/../database/migrations/create_saasu_entities_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_saasu_entities_table.php')
                 ], 'migrations');
             }
+
+            $this->publishes([
+                __DIR__.'/../config/saasu.php' => config_path('saasu.php'),
+            ], 'config');
         }
 
-        $this->publishes([
-            __DIR__.'/../config/saasu.php' => config_path('saasu.php'),
-        ], 'config');
+
     }
 
 }

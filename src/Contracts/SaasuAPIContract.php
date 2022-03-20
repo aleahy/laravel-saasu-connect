@@ -1,8 +1,8 @@
 <?php
 
-namespace Aleahy\LaravelSaasuConnect\Contacts;
+namespace Aleahy\LaravelSaasuConnect\Contracts;
 
-interface SaasuAPIContact
+interface SaasuAPIContract
 {
     public function findEntities(string $entityName, array $searchParameters);
     public function getAllEntities(string $entityName, array $searchParams = []);

@@ -5,25 +5,12 @@ A Laravel wrapper for SaasuConnect
 This package can be imported into laravel to be able to make requests on the Saasu API.
 
 ## Installation
-This is a private repository, so a few steps must be completed to make sure it can be installed.
-1. Add the repository to `composer.json`
-```bash
-"repositories":[
-    {
-        "type": "vcs",
-        "url": "git@github.com:aleahy/laravel-saasu-connect.git"
-    },
-    {
-        "type": "vcs",
-        "url": "git@github.com:aleahy/saasu-connect.git"
-    }
-]
-```
-
-2. Ensure the server has an ssh key configured to connect to github.
-3. Install the package.
 ```bash
 composer require aleahy/laravel-saasu-connect
+```
+Then publish the config file to be able to access your saasu username, password and File ID.
+```bash
+php artisan vendor:publish --provider="Aleahy\LaravelSaasuConnect\ServiceProvider" --tag=config
 ```
 
 ## Usage
@@ -53,3 +40,23 @@ The following methods currently exist:
 - Contact
 - Invoice
 
+## HasSaasuEntity Trait
+Models can also be associated with a saasu id. This trait adds a SaasuEntity `hasOne` relationship
+which holds the saasu ID.
+
+Adding the trait ```HasSaasuEntity``` to your models assigns
+them a model to manually track the saasu id.
+
+### Installation
+Add the trait ```HasSaasuEntity``` to your model.
+
+You will also need to publish the migration to store the saasu id.
+```php
+php artisan vendor:publish --provider="Aleahy\LaravelSaasuConnect\ServiceProvider" --tag=migrations
+```
+### Available methods
+`setSaasuID` - set the value of the saasu id for the model.
+
+`getSaasuID` - returns the value of the saasu id for the model.
+
+`hasSaasuID` - returns true or false, depending on if the saasuID value has been set.

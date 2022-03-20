@@ -2,23 +2,23 @@
 
 namespace Aleahy\LaravelSaasuConnect\Testing;
 
-use Aleahy\LaravelSaasuConnect\Contacts\SaasuAPIContact;
+use Aleahy\LaravelSaasuConnect\Contracts\SaasuAPIContract;
 use Aleahy\SaasuConnect\Entities\Company;
 use Aleahy\SaasuConnect\Entities\Contact;
-use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\Assert as PHPUnit;
 
-class SaasuAPIFake implements SaasuAPIContact
+class SaasuAPIFake implements SaasuAPIContract
 {
     private array $insertions = [];
 
     public function assertInsertSentToSaasu(string $entityName, array $attributes = [])
     {
-        Assert::assertTrue($this->insertSent($entityName, $attributes));
+        PHPUnit::assertTrue($this->insertSent($entityName, $attributes));
     }
 
     public function assertNothingSentToSaasu()
     {
-        Assert::assertTrue(count($this->insertions) === 0);
+        PHPUnit::assertTrue(count($this->insertions) === 0);
     }
 
     protected function insertSent(string $entityName, $attributes) {
