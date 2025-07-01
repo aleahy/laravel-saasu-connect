@@ -6,10 +6,7 @@ use Aleahy\LaravelSaasuConnect\Models\SaasuEntity;
 
 class HasSaasuEntityTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function it_can_be_assigned_a_saasu_id()
+    public function test_it_can_be_assigned_a_saasu_id()
     {
         $this->assertNull($this->testEntity->saasuEntity);
 
@@ -24,10 +21,7 @@ class HasSaasuEntityTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function it_can_get_its_saasu_id()
+    public function test_it_can_get_its_saasu_id()
     {
         $this->assertNull($this->testEntity->getSaasuId());
 
@@ -36,9 +30,6 @@ class HasSaasuEntityTest extends TestCase
         $this->assertEquals(5, $this->testEntity->refresh()->getSaasuId());
     }
 
-    /**
-     * @test
-     */
     public function test_it_can_update_a_saasu_id()
     {
         $this->testEntity->setSaasuId(5);
@@ -50,9 +41,6 @@ class HasSaasuEntityTest extends TestCase
         $this->assertEquals(6, $this->testEntity->refresh()->getSaasuId());
     }
 
-    /**
-     * @test
-     */
     public function test_it_can_check_if_it_has_a_saasu_id()
     {
         $this->assertFalse($this->testEntity->hasSaasuId());
