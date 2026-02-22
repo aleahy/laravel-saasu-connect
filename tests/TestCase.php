@@ -2,6 +2,7 @@
 
 namespace Aleahy\LaravelSaasuConnect\Tests;
 use Aleahy\LaravelSaasuConnect\ServiceProvider;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -12,7 +13,7 @@ class TestCase extends Orchestra
 {
     use RefreshDatabase;
 
-    protected $testEntity;
+    protected Entity $testEntity;
 
     public function setUp(): void
     {
@@ -27,12 +28,15 @@ class TestCase extends Orchestra
         return [
             ServiceProvider::class,
             RayServiceProvider::class,
-
         ];
     }
 
     protected function getEnvironmentSetUp($app)
     {
+        Relation::morphMap([
+            'morph_entity' => Entity::class,
+        ]);
+
         $app['config']->set('database.default', 'sqlite');
         $app['config']->set('database.connections.sqlite', [
             'driver' => 'sqlite',
