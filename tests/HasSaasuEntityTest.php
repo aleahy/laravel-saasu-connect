@@ -16,7 +16,7 @@ class HasSaasuEntityTest extends TestCase
 
         $this->assertDatabaseHas('saasu_entities', [
             'model_id' => $this->testEntity->id,
-            'model_type'=> Entity::class,
+            'model_type'=> 'morph_entity',
             'saasu_id' => 5
         ]);
     }
