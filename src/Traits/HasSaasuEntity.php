@@ -25,7 +25,7 @@ trait HasSaasuEntity
     {
         SaasuEntity::updateOrCreate(
             [
-                'model_type' => self::class,
+                'model_type' => $this->getMorphClass(),
                 'model_id' => $this->id,
             ],
             ['saasu_id' => $saasu_id]
